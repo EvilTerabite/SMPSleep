@@ -1,0 +1,6 @@
+name: SMPSleep
+version: ${project.version}
+main: me.evilterabite.smpsleep.SMPSleep
+api-version: 1.17
+authors: [ evilterabite ]
+description: A hasslefree drag and drop sleep plugin for SMP players.

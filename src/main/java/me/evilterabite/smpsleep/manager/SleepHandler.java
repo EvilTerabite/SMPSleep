@@ -1,10 +1,8 @@
 package me.evilterabite.smpsleep.manager;
 
 import me.evilterabite.smpsleep.SMPSleep;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.NamedTextColor;
-import net.kyori.adventure.title.Title;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -21,11 +19,7 @@ public class SleepHandler implements Listener {
         if(result == PlayerBedEnterEvent.BedEnterResult.OK) {
             Bukkit.getScheduler().runTaskLater(SMPSleep.getProvidingPlugin(SMPSleep.class), () -> {
                 Objects.requireNonNull(Bukkit.getServer().getWorld("world")).setTime(1000);
-                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "weather clear 500000");
-                Title title = Title.title(Component.empty(), Component.text(SMPSleep.fromComponentToLegacy(player.displayName()) + " went to sleep!", NamedTextColor.GOLD));
-                for(Player p : Bukkit.getOnlinePlayers()) {
-                    p.showTitle(title);
-                }
+                Bukkit.broadcastMessage(ChatColor.BLUE + player.getDisplayName() + ChatColor.YELLOW + " went to sleep! Sweet Dreams...");
             }, 20L * 5);
         }
     }
